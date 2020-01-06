@@ -11,7 +11,7 @@ app.get("/teste/:nome", function(req, res){
 
 app.get("/inicio", function(req, res){
 
-    res.send('Bem vindaaa');
+    res.sendFile(__dirname+"/html/index.html")
 
 });
 
