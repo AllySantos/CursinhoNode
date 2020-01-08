@@ -1,10 +1,13 @@
-<form name="formEdit" action="/attDados" method="POST">
+{{#posts}}
+
+<form name="formEdit" action="/atualizaPost/{{id}}" method="POST">
 
     <p>Título</p>
-    <input type="text" name="tituloPost" value="{{tituloPost}}">
+    <input type="text" name="tituloPost" value="{{titulo}}">
 
     <p>Conteúdo</p>
-    <textarea name="conteudoPost">{{conteudoPost}}</textarea>
+    <textarea name="conteudoPost">{{conteudo}}</textarea>
 
     <button type="submit">Enviar</button>
+{{/posts}}
 </form>

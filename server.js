@@ -21,7 +21,7 @@ const bodyparser = require('body-parser')
     //Routes
     app.use(router)
 
-app.listen(3001, function(){
+    app.listen(3030, function(){
     //Função de callback
     console.log("Deu bommm");
 });  
