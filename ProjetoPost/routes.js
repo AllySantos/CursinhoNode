@@ -1,7 +1,6 @@
 const express = require('express')
 const routes = express.Router()
 const PostController = require('./controllers/PostControler')
-const Post = require('./models/Post')
 
 
 routes.get("/home", PostController.list)
