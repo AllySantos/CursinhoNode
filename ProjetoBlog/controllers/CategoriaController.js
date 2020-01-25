@@ -28,25 +28,34 @@ module.exports= {
     },
 
     async update(req, res){
+     
         const catEditada = await Categoria.findByIdAndUpdate(req.params.id, req.body, {new: true})
         .then((categoria) => {
+           
             req.flash("success_msg", "Categoria editada com sucesso")
             res.redirect('/admin/categorias')
         }).catch((erro) =>{
-
+            
             req.flash("error_msg", "Id não existe")
             res.redirect('/admin/categorias')
         })
     },
 
     async show(req, res){
-        await Categoria.find({_id:req.params.id}).then((categorias) => {
+        await Categoria.findOne({_id:req.params.id}).then((categorias) => {
+            console.log(categorias)
             res.render('admin/form-edit', {categorias})
 
         }).catch((erro) =>{
             console.log(erro)
         })
        
+    },
+
+    async delete(req, res){
+        await Categoria.findByIdAndDelete({_id : req.params.id})
+        req.flash("success_msg", "Categoria deletada com sucesso")
+        res.redirect('/admin/categorias')
     }
 
 

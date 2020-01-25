@@ -1,5 +1,7 @@
 const { check, validationResult } = require('express-validator')
 
+
+
 const categoriaValidationRules = () =>{
 
     return [
@@ -13,7 +15,7 @@ const categoriaValidationRules = () =>{
     ]
  }
 
- const validate = (req, res, next) => {
+ const validateStore = (req, res, next) => {
     const erros = validationResult(req)
     
     if(erros.isEmpty()){
@@ -23,8 +25,27 @@ const categoriaValidationRules = () =>{
     }
  }
 
+ 
+ const validateUpdate = (req, res, next) => {
+    const erros = validationResult(req)
+    
+    if(erros.isEmpty()){
+        next()
+    }else{
+        res.render('admin/form-edit', {
+            erros: erros.array(),  
+            categorias : {
+                nomeCategoria: req.body.nomeCategoria,
+                slugCategoria: req.body.slugCategoria,
+                _id: req.params.id
+            }
+        })
+    }
+ }
+
 module.exports = {
     categoriaValidationRules,
-    validate
+    validateStore,
+    validateUpdate
 }
 

@@ -13,8 +13,14 @@
                         
                         <h3 class="col card-title"> {{this.nomeCategoria}}</h3>
 
-                        <a href="/admin/categorias/form-edit/{{this._id}}"><button class=" col-10 btn btn-danger mr-2"><i class="fas fa-trash fa-lg"></i></button></a> 
+                        <form name="deletaPost" action="/admin/categorias/deletarCategoria/{{this._id}}" method="POST">
+
+                            <button type="submit" class=" col-10 btn btn-danger mr-2"><i class="fas fa-trash fa-lg"></i></button></a> 
+                            
+                        </form>
+                        
                         <a href="/admin/categorias/editarCategorias/{{this._id}}"><button class=" col-10 btn btn-info mr-2"><i class="fas fa-edit fa-lg"></i></button></a> 
+                   
                     </div>
                     
                     <p class="card-text">{{this.slugCategoria}}</p>    
